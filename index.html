@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <<style>
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            background-image: url("amogus.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-control {
+            margin: 10px;
+            padding: 5px;
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            font-size: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .form-control.small {
+            width: 100px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .input-container label {
+            font-weight: bold;
+            margin: 5px;
+            padding: 5px;
+            font-size: 24px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .button-container button {
+            margin: 5px;
+            padding: 10px;
+            width: 150px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .gif-container {
+            display: none;
+            /* hide the gif by default */
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .gif-container.show {
+            display: flex;
+            /* show the gif when the show class is added */
+        }
+
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="calculator-form">
+            <div class="input-container">
+                <label for="first-number">First number:</label>
+                <input type="number" id="first-number" class="form-control" placeholder="Enter first number" />
+            </div>
+            <div class="input-container">
+                <label for="second-number">Second number:</label>
+                <input type="number" id="second-number" class="form-control" placeholder="Enter second number" />
+            </div>
+            <div class="input-container">
+                <label for="result">Result:</label>
+                <input type="text" id="result" class="form-control small" readonly />
+            </div>
+            <div class="button-container">
+            <button type="button" id="add-button">Add</button>
+            <button type="button" id="subtract-button">Subtract</button>
+            <button type="button" id="multiply-button">Multiply</button>
+            <button type="button" id="divide-button">Divide</button>
+            </div>
+            <div class="gif-container" id="loading-gif">
+            <img src="Imposter.gif" alt="Loading..." />
+            </div>
+            </form>
+            </div>
+            <script>
+                const calculatorForm = document.querySelector('#calculator-form');
+                const firstNumberInput = document.querySelector('#first-number');
+                const secondNumberInput = document.querySelector('#second-number');
+                const resultInput = document.querySelector('#result');
+                const addButton = document.querySelector('#add-button');
+                const subtractButton = document.querySelector('#subtract-button');
+                const multiplyButton = document.querySelector('#multiply-button');
+                const divideButton = document.querySelector('#divide-button');
+                const loadingGif = document.querySelector('#loading-gif');
+                const gifContainer = document.querySelector(".gif-container");
+              
+                addButton.addEventListener('click', () => {
+                  const firstNumber = Number(firstNumberInput.value);
+                  const secondNumber = Number(secondNumberInput.value);
+                  const result = firstNumber + secondNumber;
+                  resultInput.value = result;
+                  gifContainer.classList.add("show"); // add the show class
+  setTimeout(() => {
+    gifContainer.classList.remove("show");
+  }, 4000);
+                });
+              
+                subtractButton.addEventListener('click', () => {
+                  const firstNumber = Number(firstNumberInput.value);
+                  const secondNumber = Number(secondNumberInput.value);
+                  const result = firstNumber - secondNumber;
+                  resultInput.value = result;
+                  gifContainer.classList.add("show"); // add the show class
+  setTimeout(() => {
+    gifContainer.classList.remove("show");
+  }, 4000);
+                });
+              
+                multiplyButton.addEventListener('click', () => {
+                  const firstNumber = Number(firstNumberInput.value);
+                  const secondNumber = Number(secondNumberInput.value);
+                  const result = firstNumber * secondNumber;
+                  resultInput.value = result;
+                  gifContainer.classList.add("show"); // add the show class
+  setTimeout(() => {
+    gifContainer.classList.remove("show");
+  }, 4000);
+                });
+              
+                divideButton.addEventListener('click', () => {
+                  const firstNumber = Number(firstNumberInput.value);
+                  const secondNumber = Number(secondNumberInput.value);
+                  if (secondNumber === 0) {
+                    alert('Cannot divide by zero');
+                    return;
+                  }
+                  const result = firstNumber / secondNumber;
+                  resultInput.value = result;
+                  gifContainer.classList.add("show"); // add the show class
+  setTimeout(() => {
+    gifContainer.classList.remove("show");
+  }, 4000);
+                });
+              
+                calculatorForm.addEventListener('submit', (event) => {
+                  event.preventDefault();
+                });
+              </script>
+              
+</body>
+</html>
